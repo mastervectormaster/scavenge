@@ -51552,6 +51552,8 @@ definitions:
     description: |-
       Version defines the versioning scheme used to negotiate the IBC verison in
       the connection handshake.
+  mastervectormaster.scavenge.scavenge.MsgCommitSolutionResponse:
+    type: object
   mastervectormaster.scavenge.scavenge.MsgSubmitScavengeResponse:
     type: object
   mastervectormaster.scavenge.scavenge.Params:

@@ -9,12 +9,16 @@ import (
 
 func RegisterCodec(cdc *codec.LegacyAmino) {
 	cdc.RegisterConcrete(&MsgSubmitScavenge{}, "scavenge/SubmitScavenge", nil)
+	cdc.RegisterConcrete(&MsgCommitSolution{}, "scavenge/CommitSolution", nil)
 	// this line is used by starport scaffolding # 2
 }
 
 func RegisterInterfaces(registry cdctypes.InterfaceRegistry) {
 	registry.RegisterImplementations((*sdk.Msg)(nil),
 		&MsgSubmitScavenge{},
+	)
+	registry.RegisterImplementations((*sdk.Msg)(nil),
+		&MsgCommitSolution{},
 	)
 	// this line is used by starport scaffolding # 3
 

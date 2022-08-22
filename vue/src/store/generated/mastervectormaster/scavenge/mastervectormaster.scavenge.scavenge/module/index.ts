@@ -5,10 +5,12 @@ import { SigningStargateClient } from "@cosmjs/stargate";
 import { Registry, OfflineSigner, EncodeObject, DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { Api } from "./rest";
 import { MsgSubmitScavenge } from "./types/scavenge/tx";
+import { MsgCommitSolution } from "./types/scavenge/tx";
 
 
 const types = [
   ["/mastervectormaster.scavenge.scavenge.MsgSubmitScavenge", MsgSubmitScavenge],
+  ["/mastervectormaster.scavenge.scavenge.MsgCommitSolution", MsgCommitSolution],
   
 ];
 export const MissingWalletError = new Error("wallet is required");
@@ -42,6 +44,7 @@ const txClient = async (wallet: OfflineSigner, { addr: addr }: TxClientOptions =
   return {
     signAndBroadcast: (msgs: EncodeObject[], { fee, memo }: SignAndBroadcastOptions = {fee: defaultFee, memo: ""}) => client.signAndBroadcast(address, msgs, fee,memo),
     msgSubmitScavenge: (data: MsgSubmitScavenge): EncodeObject => ({ typeUrl: "/mastervectormaster.scavenge.scavenge.MsgSubmitScavenge", value: MsgSubmitScavenge.fromPartial( data ) }),
+    msgCommitSolution: (data: MsgCommitSolution): EncodeObject => ({ typeUrl: "/mastervectormaster.scavenge.scavenge.MsgCommitSolution", value: MsgCommitSolution.fromPartial( data ) }),
     
   };
 };

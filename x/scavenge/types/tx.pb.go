@@ -131,15 +131,113 @@ func (m *MsgSubmitScavengeResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MsgSubmitScavengeResponse proto.InternalMessageInfo
 
+type MsgCommitSolution struct {
+	Creator              string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	SolutionHash         string `protobuf:"bytes,2,opt,name=solutionHash,proto3" json:"solutionHash,omitempty"`
+	SolutionScavengeHash string `protobuf:"bytes,3,opt,name=solutionScavengeHash,proto3" json:"solutionScavengeHash,omitempty"`
+}
+
+func (m *MsgCommitSolution) Reset()         { *m = MsgCommitSolution{} }
+func (m *MsgCommitSolution) String() string { return proto.CompactTextString(m) }
+func (*MsgCommitSolution) ProtoMessage()    {}
+func (*MsgCommitSolution) Descriptor() ([]byte, []int) {
+	return fileDescriptor_62ec6f1544538068, []int{2}
+}
+func (m *MsgCommitSolution) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgCommitSolution) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgCommitSolution.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgCommitSolution) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCommitSolution.Merge(m, src)
+}
+func (m *MsgCommitSolution) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgCommitSolution) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCommitSolution.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgCommitSolution proto.InternalMessageInfo
+
+func (m *MsgCommitSolution) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgCommitSolution) GetSolutionHash() string {
+	if m != nil {
+		return m.SolutionHash
+	}
+	return ""
+}
+
+func (m *MsgCommitSolution) GetSolutionScavengeHash() string {
+	if m != nil {
+		return m.SolutionScavengeHash
+	}
+	return ""
+}
+
+type MsgCommitSolutionResponse struct {
+}
+
+func (m *MsgCommitSolutionResponse) Reset()         { *m = MsgCommitSolutionResponse{} }
+func (m *MsgCommitSolutionResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgCommitSolutionResponse) ProtoMessage()    {}
+func (*MsgCommitSolutionResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_62ec6f1544538068, []int{3}
+}
+func (m *MsgCommitSolutionResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgCommitSolutionResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgCommitSolutionResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgCommitSolutionResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCommitSolutionResponse.Merge(m, src)
+}
+func (m *MsgCommitSolutionResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgCommitSolutionResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCommitSolutionResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgCommitSolutionResponse proto.InternalMessageInfo
+
 func init() {
 	proto.RegisterType((*MsgSubmitScavenge)(nil), "mastervectormaster.scavenge.scavenge.MsgSubmitScavenge")
 	proto.RegisterType((*MsgSubmitScavengeResponse)(nil), "mastervectormaster.scavenge.scavenge.MsgSubmitScavengeResponse")
+	proto.RegisterType((*MsgCommitSolution)(nil), "mastervectormaster.scavenge.scavenge.MsgCommitSolution")
+	proto.RegisterType((*MsgCommitSolutionResponse)(nil), "mastervectormaster.scavenge.scavenge.MsgCommitSolutionResponse")
 }
 
 func init() { proto.RegisterFile("scavenge/tx.proto", fileDescriptor_62ec6f1544538068) }
 
 var fileDescriptor_62ec6f1544538068 = []byte{
-	// 260 bytes of a gzipped FileDescriptorProto
+	// 310 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0x2c, 0x4e, 0x4e, 0x2c,
 	0x4b, 0xcd, 0x4b, 0x4f, 0xd5, 0x2f, 0xa9, 0xd0, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x52, 0xc9,
 	0x4d, 0x2c, 0x2e, 0x49, 0x2d, 0x2a, 0x4b, 0x4d, 0x2e, 0xc9, 0x2f, 0x82, 0xb0, 0xf5, 0x60, 0xaa,
@@ -149,14 +247,17 @@ var fileDescriptor_62ec6f1544538068 = []byte{
 	0x99, 0x9f, 0xe7, 0x91, 0x58, 0x9c, 0x21, 0xc1, 0x04, 0x96, 0x46, 0x11, 0x13, 0x52, 0xe0, 0xe2,
 	0x4e, 0x49, 0x2d, 0x4e, 0x2e, 0xca, 0x2c, 0x00, 0x09, 0x49, 0x30, 0x83, 0x95, 0x20, 0x0b, 0x09,
 	0x89, 0x71, 0xb1, 0x15, 0xa5, 0x96, 0x27, 0x16, 0xa5, 0x48, 0xb0, 0x80, 0x25, 0xa1, 0x3c, 0x25,
-	0x69, 0x2e, 0x49, 0x0c, 0xc7, 0x04, 0xa5, 0x16, 0x17, 0xe4, 0xe7, 0x15, 0xa7, 0x1a, 0x4d, 0x62,
-	0xe4, 0x62, 0xf6, 0x2d, 0x4e, 0x17, 0xea, 0x62, 0xe4, 0xe2, 0x43, 0x73, 0xaf, 0xb9, 0x1e, 0x31,
-	0x9e, 0xd5, 0xc3, 0x30, 0x5b, 0xca, 0x9e, 0x4c, 0x8d, 0x30, 0x47, 0x39, 0x05, 0x9e, 0x78, 0x24,
-	0xc7, 0x78, 0xe1, 0x91, 0x1c, 0xe3, 0x83, 0x47, 0x72, 0x8c, 0x13, 0x1e, 0xcb, 0x31, 0x5c, 0x78,
-	0x2c, 0xc7, 0x70, 0xe3, 0xb1, 0x1c, 0x43, 0x94, 0x79, 0x7a, 0x66, 0x49, 0x46, 0x69, 0x92, 0x5e,
-	0x72, 0x7e, 0xae, 0x3e, 0xa6, 0x25, 0xfa, 0xf0, 0x08, 0xab, 0x40, 0x30, 0x4b, 0x2a, 0x0b, 0x52,
-	0x8b, 0x93, 0xd8, 0xc0, 0xf1, 0x67, 0x0c, 0x08, 0x00, 0x00, 0xff, 0xff, 0x1d, 0xc7, 0x76, 0x1f,
-	0xd4, 0x01, 0x00, 0x00,
+	0x69, 0x2e, 0x49, 0x0c, 0xc7, 0x04, 0xa5, 0x16, 0x17, 0xe4, 0xe7, 0x15, 0xa7, 0x2a, 0xb5, 0x42,
+	0x9c, 0xea, 0x9c, 0x9f, 0x0b, 0x92, 0x85, 0x5a, 0x48, 0xa1, 0x53, 0x8d, 0xb8, 0x44, 0x60, 0x7c,
+	0x98, 0x7d, 0x60, 0xb5, 0x10, 0x37, 0x63, 0x95, 0x83, 0x3a, 0x12, 0xd5, 0x19, 0x30, 0x47, 0x1a,
+	0xcd, 0x67, 0xe2, 0x62, 0xf6, 0x2d, 0x4e, 0x17, 0xea, 0x62, 0xe4, 0xe2, 0x43, 0x0b, 0x54, 0x73,
+	0x3d, 0x62, 0x62, 0x44, 0x0f, 0x23, 0x00, 0xa4, 0xec, 0xc9, 0xd4, 0x08, 0x73, 0x14, 0xd8, 0x31,
+	0x68, 0xc1, 0x46, 0xbc, 0x63, 0x50, 0x35, 0x92, 0xe0, 0x18, 0xec, 0x21, 0xe4, 0x14, 0x78, 0xe2,
+	0x91, 0x1c, 0xe3, 0x85, 0x47, 0x72, 0x8c, 0x0f, 0x1e, 0xc9, 0x31, 0x4e, 0x78, 0x2c, 0xc7, 0x70,
+	0xe1, 0xb1, 0x1c, 0xc3, 0x8d, 0xc7, 0x72, 0x0c, 0x51, 0xe6, 0xe9, 0x99, 0x25, 0x19, 0xa5, 0x49,
+	0x7a, 0xc9, 0xf9, 0xb9, 0xfa, 0x98, 0x96, 0xe8, 0xc3, 0x93, 0x78, 0x05, 0x82, 0x59, 0x52, 0x59,
+	0x90, 0x5a, 0x9c, 0xc4, 0x06, 0x4e, 0xf1, 0xc6, 0x80, 0x00, 0x00, 0x00, 0xff, 0xff, 0x0f, 0x2b,
+	0x20, 0x66, 0x06, 0x03, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -172,6 +273,7 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type MsgClient interface {
 	SubmitScavenge(ctx context.Context, in *MsgSubmitScavenge, opts ...grpc.CallOption) (*MsgSubmitScavengeResponse, error)
+	CommitSolution(ctx context.Context, in *MsgCommitSolution, opts ...grpc.CallOption) (*MsgCommitSolutionResponse, error)
 }
 
 type msgClient struct {
@@ -191,9 +293,19 @@ func (c *msgClient) SubmitScavenge(ctx context.Context, in *MsgSubmitScavenge, o
 	return out, nil
 }
 
+func (c *msgClient) CommitSolution(ctx context.Context, in *MsgCommitSolution, opts ...grpc.CallOption) (*MsgCommitSolutionResponse, error) {
+	out := new(MsgCommitSolutionResponse)
+	err := c.cc.Invoke(ctx, "/mastervectormaster.scavenge.scavenge.Msg/CommitSolution", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MsgServer is the server API for Msg service.
 type MsgServer interface {
 	SubmitScavenge(context.Context, *MsgSubmitScavenge) (*MsgSubmitScavengeResponse, error)
+	CommitSolution(context.Context, *MsgCommitSolution) (*MsgCommitSolutionResponse, error)
 }
 
 // UnimplementedMsgServer can be embedded to have forward compatible implementations.
@@ -202,6 +314,9 @@ type UnimplementedMsgServer struct {
 
 func (*UnimplementedMsgServer) SubmitScavenge(ctx context.Context, req *MsgSubmitScavenge) (*MsgSubmitScavengeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SubmitScavenge not implemented")
+}
+func (*UnimplementedMsgServer) CommitSolution(ctx context.Context, req *MsgCommitSolution) (*MsgCommitSolutionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CommitSolution not implemented")
 }
 
 func RegisterMsgServer(s grpc1.Server, srv MsgServer) {
@@ -226,6 +341,24 @@ func _Msg_SubmitScavenge_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Msg_CommitSolution_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgCommitSolution)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).CommitSolution(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/mastervectormaster.scavenge.scavenge.Msg/CommitSolution",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).CommitSolution(ctx, req.(*MsgCommitSolution))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Msg_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "mastervectormaster.scavenge.scavenge.Msg",
 	HandlerType: (*MsgServer)(nil),
@@ -233,6 +366,10 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SubmitScavenge",
 			Handler:    _Msg_SubmitScavenge_Handler,
+		},
+		{
+			MethodName: "CommitSolution",
+			Handler:    _Msg_CommitSolution_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -313,6 +450,73 @@ func (m *MsgSubmitScavengeResponse) MarshalToSizedBuffer(dAtA []byte) (int, erro
 	return len(dAtA) - i, nil
 }
 
+func (m *MsgCommitSolution) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgCommitSolution) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgCommitSolution) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.SolutionScavengeHash) > 0 {
+		i -= len(m.SolutionScavengeHash)
+		copy(dAtA[i:], m.SolutionScavengeHash)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.SolutionScavengeHash)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if len(m.SolutionHash) > 0 {
+		i -= len(m.SolutionHash)
+		copy(dAtA[i:], m.SolutionHash)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.SolutionHash)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgCommitSolutionResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgCommitSolutionResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgCommitSolutionResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintTx(dAtA []byte, offset int, v uint64) int {
 	offset -= sovTx(v)
 	base := offset
@@ -350,6 +554,36 @@ func (m *MsgSubmitScavenge) Size() (n int) {
 }
 
 func (m *MsgSubmitScavengeResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgCommitSolution) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.SolutionHash)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.SolutionScavengeHash)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgCommitSolutionResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -569,6 +803,202 @@ func (m *MsgSubmitScavengeResponse) Unmarshal(dAtA []byte) error {
 		}
 		if fieldNum <= 0 {
 			return fmt.Errorf("proto: MsgSubmitScavengeResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgCommitSolution) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgCommitSolution: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgCommitSolution: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field SolutionHash", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.SolutionHash = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field SolutionScavengeHash", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.SolutionScavengeHash = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgCommitSolutionResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgCommitSolutionResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgCommitSolutionResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		default:

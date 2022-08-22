@@ -8,6 +8,7 @@ option go_package = "github.com/mastervectormaster/scavenge/x/scavenge/types";
 // Msg defines the Msg service.
 service Msg {
       rpc SubmitScavenge(MsgSubmitScavenge) returns (MsgSubmitScavengeResponse);
+  rpc CommitSolution(MsgCommitSolution) returns (MsgCommitSolutionResponse);
 // this line is used by starport scaffolding # proto/tx/rpc
 }
 
@@ -19,6 +20,15 @@ message MsgSubmitScavenge {
 }
 
 message MsgSubmitScavengeResponse {
+}
+
+message MsgCommitSolution {
+  string creator = 1;
+  string solutionHash = 2;
+  string solutionScavengeHash = 3;
+}
+
+message MsgCommitSolutionResponse {
 }
 
 // this line is used by starport scaffolding # proto/tx/message
