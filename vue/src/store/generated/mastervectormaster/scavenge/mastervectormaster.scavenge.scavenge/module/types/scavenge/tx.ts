@@ -20,6 +20,13 @@ export interface MsgCommitSolution {
 
 export interface MsgCommitSolutionResponse {}
 
+export interface MsgRevealSolution {
+  creator: string;
+  solution: string;
+}
+
+export interface MsgRevealSolutionResponse {}
+
 const baseMsgSubmitScavenge: object = {
   creator: "",
   solutionHash: "",
@@ -338,15 +345,142 @@ export const MsgCommitSolutionResponse = {
   },
 };
 
+const baseMsgRevealSolution: object = { creator: "", solution: "" };
+
+export const MsgRevealSolution = {
+  encode(message: MsgRevealSolution, writer: Writer = Writer.create()): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.solution !== "") {
+      writer.uint32(18).string(message.solution);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgRevealSolution {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgRevealSolution } as MsgRevealSolution;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.solution = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgRevealSolution {
+    const message = { ...baseMsgRevealSolution } as MsgRevealSolution;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (object.solution !== undefined && object.solution !== null) {
+      message.solution = String(object.solution);
+    } else {
+      message.solution = "";
+    }
+    return message;
+  },
+
+  toJSON(message: MsgRevealSolution): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.solution !== undefined && (obj.solution = message.solution);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<MsgRevealSolution>): MsgRevealSolution {
+    const message = { ...baseMsgRevealSolution } as MsgRevealSolution;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (object.solution !== undefined && object.solution !== null) {
+      message.solution = object.solution;
+    } else {
+      message.solution = "";
+    }
+    return message;
+  },
+};
+
+const baseMsgRevealSolutionResponse: object = {};
+
+export const MsgRevealSolutionResponse = {
+  encode(
+    _: MsgRevealSolutionResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgRevealSolutionResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgRevealSolutionResponse,
+    } as MsgRevealSolutionResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgRevealSolutionResponse {
+    const message = {
+      ...baseMsgRevealSolutionResponse,
+    } as MsgRevealSolutionResponse;
+    return message;
+  },
+
+  toJSON(_: MsgRevealSolutionResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<MsgRevealSolutionResponse>
+  ): MsgRevealSolutionResponse {
+    const message = {
+      ...baseMsgRevealSolutionResponse,
+    } as MsgRevealSolutionResponse;
+    return message;
+  },
+};
+
 /** Msg defines the Msg service. */
 export interface Msg {
   SubmitScavenge(
     request: MsgSubmitScavenge
   ): Promise<MsgSubmitScavengeResponse>;
-  /** this line is used by starport scaffolding # proto/tx/rpc */
   CommitSolution(
     request: MsgCommitSolution
   ): Promise<MsgCommitSolutionResponse>;
+  /** this line is used by starport scaffolding # proto/tx/rpc */
+  RevealSolution(
+    request: MsgRevealSolution
+  ): Promise<MsgRevealSolutionResponse>;
 }
 
 export class MsgClientImpl implements Msg {
@@ -379,6 +513,20 @@ export class MsgClientImpl implements Msg {
     );
     return promise.then((data) =>
       MsgCommitSolutionResponse.decode(new Reader(data))
+    );
+  }
+
+  RevealSolution(
+    request: MsgRevealSolution
+  ): Promise<MsgRevealSolutionResponse> {
+    const data = MsgRevealSolution.encode(request).finish();
+    const promise = this.rpc.request(
+      "mastervectormaster.scavenge.scavenge.Msg",
+      "RevealSolution",
+      data
+    );
+    return promise.then((data) =>
+      MsgRevealSolutionResponse.decode(new Reader(data))
     );
   }
 }

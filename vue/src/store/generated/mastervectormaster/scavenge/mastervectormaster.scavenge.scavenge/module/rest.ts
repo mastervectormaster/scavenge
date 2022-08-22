@@ -22,6 +22,8 @@ export interface RpcStatus {
 
 export type ScavengeMsgCommitSolutionResponse = object;
 
+export type ScavengeMsgRevealSolutionResponse = object;
+
 export type ScavengeMsgSubmitScavengeResponse = object;
 
 /**
